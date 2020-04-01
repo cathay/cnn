@@ -33,22 +33,12 @@ def extract_to_img(video_file_name):
             save_img(image, os.path.join(video_folder_output, "{:s}_f{:d}.jpg".format(video_name, count)))
             save_img(blur_image(image), os.path.join(video_folder_output, "{:s}_f{:d}blur.jpg".format(video_name, count)))
             save_img(noise_image(image), os.path.join(video_folder_output, "{:s}_f{:d}noise.jpg".format(video_name, count)))
-
-            flipped_image = flip_image(image)
-            save_img(flipped_image, os.path.join(video_folder_output, "{:s}_f{:d}flip.jpg".format(video_name, count)))
-            save_img(blur_image(flipped_image), os.path.join(video_folder_output, "{:s}_f{:d}flip_blur.jpg".format(video_name, count)))
-            save_img(noise_image(flipped_image), os.path.join(video_folder_output, "{:s}_f{:d}flip_noise.jpg".format(video_name, count)))
-
             # rotate
-            for angle in (5, 10, 15, -5, -10, -15):
+            for angle in (5, -5, 10, -10):
                 rotated_image = rotate_image(image, angle)
                 save_img(rotated_image, os.path.join(video_folder_output, "{:s}_f{:d}rotated{:d}.jpg".format(video_name, count, angle)))
                 save_img(blur_image(rotated_image), os.path.join(video_folder_output, "{:s}_f{:d}rotated{:d}blur.jpg".format(video_name, count, angle)))
                 save_img(noise_image(rotated_image), os.path.join(video_folder_output, "{:s}_f{:d}rotated{:d}noise.jpg".format(video_name, count, angle)))
-                flipped_rotated_image = flip_image(rotated_image)
-                save_img(flipped_rotated_image, os.path.join(video_folder_output, "{:s}_f{:d}rotated{:d}flip.jpg".format(video_name, count, angle)))
-                save_img(blur_image(flipped_rotated_image), os.path.join(video_folder_output, "{:s}_f{:d}rotated{:d}flipblur.jpg".format(video_name, count, angle)))
-                save_img(noise_image(flipped_rotated_image), os.path.join(video_folder_output, "{:s}_f{:d}rotated{:d}flipnoise.jpg".format(video_name, count, angle)))
             frames += 1
         count += 1
     print("{} frames are extracted to {}.".format(frames, video_folder_output))
