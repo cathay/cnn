@@ -33,12 +33,6 @@ def extract_to_img(video_file_name):
             save_img(image, os.path.join(video_folder_output, "{:s}_f{:d}.jpg".format(video_name, count)))
             save_img(blur_image(image), os.path.join(video_folder_output, "{:s}_f{:d}blur.jpg".format(video_name, count)))
             save_img(noise_image(image), os.path.join(video_folder_output, "{:s}_f{:d}noise.jpg".format(video_name, count)))
-            # rotate
-            for angle in (5, -5, 10, -10):
-                rotated_image = rotate_image(image, angle)
-                save_img(rotated_image, os.path.join(video_folder_output, "{:s}_f{:d}rotated{:d}.jpg".format(video_name, count, angle)))
-                save_img(blur_image(rotated_image), os.path.join(video_folder_output, "{:s}_f{:d}rotated{:d}blur.jpg".format(video_name, count, angle)))
-                save_img(noise_image(rotated_image), os.path.join(video_folder_output, "{:s}_f{:d}rotated{:d}noise.jpg".format(video_name, count, angle)))
             frames += 1
         count += 1
     print("{} frames are extracted to {}.".format(frames, video_folder_output))
